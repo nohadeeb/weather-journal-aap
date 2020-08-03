@@ -6,7 +6,7 @@ function performeAction(e) {
     let d = new Date();
     let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
     const baseurl = "http://api.openweathermap.org/data/2.5/weather?zip=";
-    const key = "&appid=eff0d8a1856b456cffe08f87e8f5884c";
+    const key = "&appid=eff0d8a1856b456cffe08f87e8f5884c&units=imperial";
     const content = document.getElementById('fav').value;
     const zip = document.getElementById('zip').value;
     getData(baseurl, zip, key)

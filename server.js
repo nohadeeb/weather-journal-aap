@@ -17,10 +17,10 @@ const server = app.listen(port, () => {
     console.log(`running on localhost : ${port}`);
 });// to make sure that server isruning properly
 app.use(express.static('website'));
-const projectData = [];//array to store out data
+const projectData = {};//array to store out data
 app.get('/getall', getApiData); // get the data tha was stored in the dataArray
 function getApiData(req,res){
-    res.send(dataArray);// send the response that was stored on our dataArray
+    res.send(projectData);// send the response that was stored on our dataArray
 }
 app.post('/addAll', addWeatherDatafunc); // post request with a callback func addWeatherfunc
 function addWeatherDatafunc(req, res){

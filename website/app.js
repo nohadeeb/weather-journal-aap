@@ -12,7 +12,9 @@ function performeAction(e) {
     getData(baseurl, zip, key)
         .then(function (data) {
             console.log(data);
+// this object will be connected to newEntry object on server.js
             postData('/addAll', { date: newDate, datatemp: data.main.temp, feelings: feelings,  cloud: data.clouds.all, feelslike: data.main.feels_like} )
+        //this is where i will directly get my data from the api
                
         })
         
@@ -63,6 +65,8 @@ const updateUI = async () => {
     const request = await fetch('/getall');
     try {
         const allData = await request.json();
+ // to update my ui i have to use the allData variable and connect it with newEntry object items which alredy was declared on server.js
+ // newEntry object on server.js takes it's items from the postData object items
         document.getElementById('date').innerHTML = ` date :  ${allData.date}`;
         document.getElementById('temp').innerHTML = `temperature : ${allData.temp} `;
         document.getElementById('addFeelings').innerHTML = `i feel :${feelings.value}`;

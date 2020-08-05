@@ -2,6 +2,12 @@ body{
     display: flex;
     flex-direction: column;
 }
+#entryHolder{
+    color: white;
+    font-weight: bold;
+
+
+}
 h1{
     text-align: center;
 }
@@ -13,7 +19,7 @@ label{
     flex-direction: column;
     align-self: center;
 }
-#domUpdate{
+#entryHolder{
     background-image: url("https://i.ibb.co/mv3jndC/free-moon-wallpaper-1.jpg");
     background-size: cover;
     align-self: center;

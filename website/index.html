@@ -18,19 +18,23 @@
             </h1>
     <div id="inputsWrapper" style="display:flex;">
  
-        <label for="">type your response<input type="text" id="fav"></label>
-        <label for="">Zip Code<input type="number" id="zip"></label>
+        <label for="">type your response<textarea name="" id="feelings" cols="30" rows="1"></textarea></label>
+        <label for="">Zip Code<input type="number" id="zip" placeholder="enter zip code here"></label>
         
         <button id="generate" >
             get data
         </button>
     </div>
-    <div id="domUpdate">
-        <div id="content" style="text-align: center;"></div>
-        <div id="date" style="text-align: center;"></div>
-        <div id="temp" style="text-align: left;"></div>
-        <div id="cloud" style="text-align: right; width: 30%; height: 8em;"></div>
-        <div id="feelslike" style="text-align: center;"></div>
+    <div id="entryHolder">
+        <div id="date" style="text-align: left; width: 100%;"></div>
+        <div id="temp" style="text-align: right; width: 100%; font-size: 1.5em;"></div>
+        <div id="addFeelings" style="text-align: center; width: 100%; font-size: 1.2em;"></div>
+    </div>
+    <div id="cloud_feels" style="display: flex; width: 70%; justify-content: space-evenly;">
+        <div id="cloud" style="text-align: right; "></div>
+        <div id="feelslike" style="text-align: center; "></div>
+        <div id="zipResponse" style="text-align: center; "></div>
+
     </div>
 </section>
 

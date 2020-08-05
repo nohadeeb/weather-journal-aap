@@ -7,14 +7,15 @@ function performeAction(e) {
     let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
     const baseurl = "http://api.openweathermap.org/data/2.5/weather?zip=";
     const key = "&appid=eff0d8a1856b456cffe08f87e8f5884c&units=imperial";
-    const content = document.getElementById('fav').value;
+    const feelings = document.getElementById('feelings');
     const zip = document.getElementById('zip').value;
     getData(baseurl, zip, key)
         .then(function (data) {
             console.log(data);
-            postData('http://localhost:8000/addAll', { date: newDate, datatemp: data.main.temp, content, cloud: data.clouds.all, feelslike: data.main.feels_like} )
+            postData('/addAll', { date: newDate, datatemp: data.main.temp, feelings: feelings,  cloud: data.clouds.all, feelslike: data.main.feels_like} )
                
         })
+        
          .then(
              updateUI()
          )
@@ -53,20 +54,26 @@ const postData = async (url='', data={}) => {
     }
  
 }
-function changebackground(){
-    data.clouds.all.value > 3 ? document.getElementById('domUpdate').style.backgroundImage = "https://i.ibb.co/hmS7QtG/sunshine-sky-abstract-yellow-clouds-background.jpg" : document.getElementById('domUpdate').style.backgroundImage = "https://ibb.co/PGDH4jW";
+function changebackground() {
+    cloud.value > 60 ? document.getElementById('entryHolder').style.backgroundImage = "https://i.ibb.co/hmS7QtG/sunshine-sky-abstract-yellow-clouds-background.jpg" : document.getElementById('entryHolder').style.backgroundImage = "https://ibb.co/PGDH4jW";
+    console.log(cloud.value);
 }
+
 const updateUI = async () => {
-    const request = await fetch('http://localhost:8000/getall');
+    const request = await fetch('/getall');
     try {
         const allData = await request.json();
-        document.getElementById('date').innerHTML = newDate;
-        document.getElementById('temp').innerHTML = allData.temp;
-        document.getElementById('content').innerHTML = content;
-        document.getElementById('felslike').innerHTML = allData.feelslike;
+        document.getElementById('date').innerHTML = ` date :  ${allData.date}`;
+        document.getElementById('temp').innerHTML = `temperature : ${allData.temp} `;
+        document.getElementById('addFeelings').innerHTML = `i feel :${feelings.value}`;
+        document.getElementById('feelslike').innerHTML = `feels like :${allData.feelslike}`;
+        document.getElementById('cloud').innerHTML = `cloud :${allData.cloud}`;
+ 
 
     } catch (error) {
         console.log("error", error);
+
     }
-    changebackground();
+
+    changebackground()
 }
